@@ -32,6 +32,8 @@ class UI{
 	}
 
 	showAlert(message, className){
+		//Clear Existing alert b4 creating new alert
+		this.clearAlert();
 		//create div
 		const div = document.createElement('div');
 		//Add classes
@@ -44,11 +46,22 @@ class UI{
 		const search = document.querySelector('.search');
 		//Insert Alert
 		container.insertBefore(div, search);
+
+		//set alert timeout
+		setTimeout(() => {
+			this.clearAlert();
+		}, 3000)
 	}
 
 	//cleart alert message
-	
-	
+	clearAlert(){
+		const currentAlert = document.querySelector('.alert');
+
+		if(currentAlert){
+			currentAlert.remove();
+		}
+	}
+
 	clearProfile(){
 		this.profile.innerHTML = '';
 	}
